@@ -1,0 +1,176 @@
+.kors-page {
+  padding: 28px 32px;
+  max-width: 960px;
+}
+
+.kors-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.kors-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.kors-kumush-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.kors-kumush-badge b {
+  color: #6366f1;
+  font-weight: 700;
+}
+
+/* Cards */
+.kors-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* Bosqich card */
+.kors-bosqich-card {
+  max-width: 420px;
+}
+
+.kors-bosqich-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.kors-bosqich-label {
+  font-size: 1rem;
+  color: #334155;
+}
+
+.kors-bosqich-label b {
+  color: #1e293b;
+}
+
+.kors-progress-wrap {
+  margin-bottom: 14px;
+}
+
+.kors-prog-badge {
+  display: inline-block;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.kors-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #dcfce7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.kors-progress-fill {
+  height: 100%;
+  background: #22c55e;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.kors-xp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kors-xp-label {
+  font-size: 1rem;
+  color: #334155;
+}
+
+.kors-xp-label b {
+  color: #1e293b;
+}
+
+/* Monitoring section */
+.kors-section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.kors-monitor-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.kors-monitor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 16px;
+}
+
+.kors-monitor-row:last-child {
+  border-bottom: none;
+}
+
+.kors-monitor-text {
+  font-size: 0.95rem;
+  color: #475569;
+}
+
+.kors-monitor-text b {
+  color: #1e293b;
+}
+
+.kors-monitor-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Totals */
+.kors-totals {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 2px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kors-total-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.kors-green {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.kors-purple {
+  color: #6366f1;
+  font-weight: 700;
+}

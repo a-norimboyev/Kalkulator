@@ -1,0 +1,246 @@
+/* Login sahifasi — ikki ustunli layout */
+* { box-sizing: border-box; }
+
+.lp-page {
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Chap panel */
+.lp-left {
+  flex: 0 0 50%;
+  width: 50%;
+  background: #f5f0e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.lp-left svg {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  display: block;
+}
+
+/* O'ng panel */
+.lp-right {
+  flex: 0 0 50%;
+  width: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.lp-form-box {
+  width: 100%;
+  max-width: 420px;
+}
+
+.lp-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 32px;
+}
+
+/* Maydon */
+.lp-field {
+  margin-bottom: 18px;
+}
+
+.lp-label {
+  display: block;
+  font-size: 0.82rem;
+  color: #999;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.lp-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: #e8eef5;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #1a1a2e;
+  outline: none;
+  transition: background 0.2s;
+}
+
+.lp-input:focus {
+  background: #dce5f0;
+}
+
+/* Parol wrapper */
+.lp-pass-wrap {
+  position: relative;
+}
+
+.lp-pass-wrap .lp-input {
+  padding-right: 48px;
+}
+
+.lp-eye {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+
+/* Xato */
+.lp-error {
+  background: #ffeaea;
+  color: #e53935;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+/* Rol tanlash */
+.lp-role-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.lp-role-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background: #f5f5f5;
+  color: #888;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lp-role-btn.lp-role-active {
+  background: #1a1a2e;
+  border-color: #1a1a2e;
+  color: #fff;
+}
+
+/* Kirish tugmasi */
+.lp-submit {
+  width: 100%;
+  padding: 14px 0;
+  background: #c8a97e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.2s;
+}
+
+.lp-submit:hover {
+  background: #b8956a;
+}
+
+@media (max-width: 768px) {
+  .lp-page { flex-direction: column; }
+  .lp-left { width: 100%; min-height: 220px; padding: 32px; }
+  .lp-right { width: 100%; padding: 32px 24px; }
+  .lp-left svg { width: 200px; }
+}
+
+
+.login-box {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(44, 44, 84, 0.15);
+  padding: 40px 32px 32px 32px;
+  min-width: 340px;
+  max-width: 90vw;
+}
+
+.login-header h1 {
+  color: #7b2ff2;
+  font-size: 2rem;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  background: #f8f8f8;
+  color: #111 !important;
+}
+
+.form-group input:focus {
+  border-color: #7b2ff2;
+  background: #fff;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px 0;
+  background: linear-gradient(90deg, #7b2ff2 0%, #f357a8 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(123,47,242,0.08);
+  transition: background 0.2s;
+}
+
+.login-btn:hover {
+  background: linear-gradient(90deg, #f357a8 0%, #7b2ff2 100%);
+}
+
+.error-message {
+  color: #f35757;
+  background: #ffeaea;
+  border-radius: 6px;
+  padding: 6px 0;
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+}

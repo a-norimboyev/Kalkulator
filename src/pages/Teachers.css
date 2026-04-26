@@ -1,0 +1,373 @@
+.teachers-container { padding: 24px; }
+
+/* ===== STUDENT GURUHLARIM ===== */
+.sg-page { padding: 28px 32px; }
+
+.sg-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 0;
+}
+.sg-tab {
+  background: none;
+  border: none;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s;
+}
+.sg-tab-active {
+  color: #E8A838;
+  border-bottom: 2px solid #E8A838;
+  font-weight: 600;
+}
+
+.sg-table-wrap {
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  overflow: hidden;
+}
+.sg-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.sg-table thead tr {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.sg-table th {
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #334155;
+}
+.sg-table td {
+  padding: 16px 20px;
+  font-size: 0.9rem;
+  color: #475569;
+  border-bottom: 1px solid #f1f5f9;
+}
+.sg-table tbody tr:last-child td { border-bottom: none; }
+.sg-empty {
+  text-align: center;
+  color: #94a3b8;
+  padding: 32px 20px !important;
+  font-size: 0.95rem;
+}
+
+
+.teachers-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.teachers-header h2 { font-size: 1.6rem; color: #7b2ff2; }
+.add-btn { background: #7b2ff2; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer; font-weight: 600; font-size: 0.95rem; }
+.add-btn:hover { background: #6a1fd0; }
+
+.teachers-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e0e0e0;
+}
+.teachers-tab {
+  background: none;
+  border: none;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.teachers-tab:hover { color: #7b2ff2; }
+.teachers-tab.tab-active { color: #7b2ff2; border-bottom: 2px solid #7b2ff2; font-weight: 700; }
+
+.teachers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.teacher-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.teacher-card:hover { box-shadow: 0 6px 24px rgba(123,47,242,0.10); transform: translateY(-2px); }
+
+.teacher-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7b2ff2, #f357a8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.teacher-info { flex: 1; min-width: 0; }
+.teacher-name { font-weight: 700; color: #1a1a2e; font-size: 1rem; margin-bottom: 2px; }
+.teacher-subject { color: #7b2ff2; font-size: 0.88rem; margin-bottom: 6px; }
+.teacher-meta { display: flex; flex-direction: column; gap: 2px; color: #888; font-size: 0.82rem; }
+
+.teacher-role-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.badge-teacher { background: #ede8ff; color: #7b2ff2; }
+.badge-assistant { background: #e3f0ff; color: #1e90ff; }
+
+/* ===== USTOZ GURUHLARIM ===== */
+.tg-group-card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 2px 12px rgba(123,47,242,0.08); cursor: pointer; border: 1.5px solid #f0eaff; transition: box-shadow 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 10px; }
+.tg-group-card:hover { box-shadow: 0 6px 24px rgba(123,47,242,0.15); border-color: #c9a8ff; }
+.tg-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.tg-group-name { font-size: 1.3rem; font-weight: 800; color: #7b2ff2; }
+.tg-course { font-size: 0.9rem; color: #888; margin-top: 2px; }
+.tg-role-badge { padding: 3px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+.tg-asosiy { background: #ede8ff; color: #7b2ff2; }
+.tg-yordam { background: #e3f0ff; color: #1e90ff; }
+.tg-card-info { display: flex; gap: 16px; font-size: 0.85rem; color: #888; }
+.tg-att-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.tg-keldi { background: #e8f5e9; color: #4caf50; padding: 3px 10px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
+.tg-kelmad { background: #ffeaea; color: #f35757; padding: 3px 10px; border-radius: 20px; font-size: 0.82rem; font-weight: 700; }
+.tg-pending { background: #f5f3ff; color: #aaa; padding: 3px 10px; border-radius: 20px; font-size: 0.82rem; }
+.tg-davomat-btn { width: 100%; background: #7b2ff2; color: #fff; border: none; border-radius: 10px; padding: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background 0.2s; }
+.tg-davomat-btn:hover { background: #6a1fd0; }
+
+/* Davomat belgilash modali */
+.tg-modal { background: #fff; border-radius: 20px; width: 96vw; max-width: 1100px; max-height: 92vh; overflow-y: auto; display: flex; flex-direction: column; box-shadow: 0 8px 40px rgba(123,47,242,0.18); animation: modal-in 0.2s ease; }
+.tg-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px 12px; border-bottom: 1px solid #f0eaff; }
+.tg-modal-name { font-size: 1.4rem; font-weight: 800; color: #7b2ff2; margin-right: 10px; }
+.tg-modal-course { font-size: 0.95rem; color: #888; }
+.tg-modal-date { padding: 10px 24px 0; font-size: 0.85rem; color: #aaa; font-weight: 600; }
+.tg-modal-summary { display: flex; gap: 12px; padding: 12px 24px; flex-wrap: wrap; }
+.tg-sum-keldi { background: #e8f5e9; color: #4caf50; padding: 5px 16px; border-radius: 20px; font-size: 0.88rem; font-weight: 700; }
+.tg-sum-kelmad { background: #ffeaea; color: #f35757; padding: 5px 16px; border-radius: 20px; font-size: 0.88rem; font-weight: 700; }
+.tg-sum-total { background: #f5f3ff; color: #7b2ff2; padding: 5px 16px; border-radius: 20px; font-size: 0.88rem; font-weight: 700; }
+.tg-table-wrap { padding: 0 16px 8px; }
+.tg-table { width: 100%; border-collapse: collapse; }
+.tg-table th { background: #f5f3ff; color: #7b2ff2; padding: 12px 14px; text-align: left; font-weight: 600; font-size: 0.88rem; }
+.tg-table td { padding: 10px 14px; border-bottom: 1px solid #f5f5f5; font-size: 0.9rem; color: #333; }
+.tg-table tr.row-keldi td { background: #f6fff8; }
+.tg-table tr.row-kelmad td { background: #fff8f8; }
+.tg-att-btns { display: flex; gap: 6px; }
+.tg-btn { border: none; border-radius: 8px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; cursor: pointer; background: #f5f5f5; color: #888; transition: all 0.15s; }
+.tg-btn.keldi.sel { background: #e8f5e9; color: #4caf50; }
+.tg-btn.kelmad.sel { background: #ffeaea; color: #f35757; }
+.tg-btn:hover { opacity: 0.85; }
+.tg-late-row { display: flex; align-items: center; gap: 6px; }
+.tg-late-input { width: 55px; border: 1.5px solid #e0d6ff; border-radius: 7px; padding: 5px 8px; font-size: 0.85rem; outline: none; }
+.tg-modal-footer { display: flex; justify-content: flex-end; padding: 12px 24px 20px; border-top: 1px solid #f0eaff; }
+
+/* Uyga vazifa tugmalari */
+.tg-hw-btns { display: flex; gap: 6px; align-items: center; }
+.tg-hw-btn { background: #f4f4f4; border: 1.5px solid #e0e0e0; border-radius: 8px; padding: 5px 12px; font-size: 0.95rem; cursor: pointer; transition: all 0.15s; }
+.tg-hw-btn.bajardi.sel { background: #e8f5e9; border-color: #4caf50; }
+.tg-hw-btn.bajarmadi.sel { background: #ffeaea; border-color: #f35757; }
+
+/* Ball input */
+.tg-ball-input { width: 58px; padding: 6px 8px; border: 1.5px solid #e0d6ff; border-radius: 8px; font-size: 0.95rem; font-weight: 700; text-align: center; outline: none; color: #7b2ff2; }
+.tg-ball-input:focus { border-color: #7b2ff2; }
+
+/* Dars mavzusi */
+.tg-topic-wrap { padding: 0 24px 4px; display: flex; flex-direction: column; gap: 6px; }
+.tg-topic-label { font-size: 0.85rem; font-weight: 700; color: #7b2ff2; }
+.tg-topic-input { padding: 10px 14px; border: 1.5px solid #e0d6ff; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; font-family: inherit; }
+.tg-topic-input:focus { border-color: #7b2ff2; box-shadow: 0 0 0 3px rgba(123,47,242,0.08); }
+.tg-card-topic { font-size: 0.82rem; color: #7b2ff2; background: #f5f3ff; border-radius: 8px; padding: 5px 10px; font-style: italic; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tg-ozlash-wrap { padding: 0 0 2px; display: flex; flex-direction: column; gap: 5px; }
+.tg-ozlash-top { display: flex; justify-content: space-between; align-items: center; }
+.tg-ozlash-label { font-size: 0.82rem; color: #888; font-weight: 600; }
+.tg-ozlash-pct { font-size: 0.9rem; font-weight: 700; }
+.tg-ozlash-bar { width: 100%; height: 7px; background: #ede8ff; border-radius: 10px; overflow: hidden; }
+.tg-ozlash-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+/* 3 stat grid */
+.tg-card-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 8px 0 4px; }
+.tg-stat-item { display: flex; flex-direction: column; gap: 3px; }
+.tg-stat-val { font-size: 1.05rem; font-weight: 800; line-height: 1; }
+.tg-stat-lbl { font-size: 0.73rem; color: #999; font-weight: 500; }
+.tg-mini-bar { width: 100%; height: 5px; background: #ede8ff; border-radius: 10px; overflow: hidden; margin-top: 3px; }
+.tg-mini-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+.teachers-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.groups-table-container {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.groups-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.groups-table thead {
+  background: #f9fafb;
+}
+
+.groups-table th {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.groups-table td {
+  padding: 1.5rem 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.groups-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.groups-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.groups-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.group-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+.teacher-cell {
+  display: flex;
+  align-items: center;
+}
+
+.teacher-badge {
+  background: #f59e0b;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.students-section {
+  margin-top: 3rem;
+}
+
+.students-section h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.students-table-container {
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.students-table thead {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.students-table th {
+  padding: 1rem;
+  text-align: left;
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.students-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: #555;
+}
+
+.students-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.attendance-badge {
+  background: #d4edda;
+  color: #155724;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.students-table .grade-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .groups-table-container {
+    overflow-x: auto;
+  }
+  
+  .groups-table th,
+  .groups-table td {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .students-table-container {
+    padding: 1rem;
+  }
+}
