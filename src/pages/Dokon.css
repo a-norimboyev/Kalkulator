@@ -282,7 +282,42 @@
 .dk-buy-no {
   background: #f3f4f6;
   color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.dk-buy-owned {
+  background: #e0f2fe;
+  color: #0284c7;
   cursor: default;
+}
+
+/* ── Kumush bar ── */
+.dk-kumush-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.dk-kumush-bar b { color: #6366f1; }
+.dk-purchased-count { font-size: 13px; color: #22c55e; font-weight: 600; }
+
+.dk-buy-msg {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #15803d;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
 }
 
 /* ── Pagination ── */

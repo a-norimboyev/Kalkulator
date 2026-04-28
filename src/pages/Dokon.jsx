@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import './Dokon.css';
 
-const MY_KUMUSH = 4730;
+const MY_KUMUSH_DEFAULT = 5060;
 
 const PRODUCTS = [
   { id: 1,  name: "Najot Ta'lim ruchkasi",         price: 800,   category: 'Aksessuarlar', bg: '#f8f9fa', emoji: '✏️' },
@@ -40,20 +40,36 @@ export default function Dokon() {
   const [search, setSearch]     = useState('');
   const [affordable, setAffordable] = useState(false);
   const [page, setPage]         = useState(1);
+  const [purchased, setPurchased] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('lms_dokon_purchased') || '[]'); } catch { return []; }
+  });
+  const [buyMsg, setBuyMsg] = useState('');
+
+  const kumush = MY_KUMUSH_DEFAULT - purchased.reduce((s, p) => s + p.price, 0);
+
+  const buyProduct = (product) => {
+    if (product.price > kumush) return;
+    if (purchased.find(p => p.id === product.id)) return;
+    const next = [...purchased, product];
+    setPurchased(next);
+    localStorage.setItem('lms_dokon_purchased', JSON.stringify(next));
+    setBuyMsg(`✅ "${product.name}" sotib olindi!`);
+    setTimeout(() => setBuyMsg(''), 2500);
+  };
 
   const resetFilters = () => {
     setCategory('Barchasi'); setPriceFrom(''); setPriceTo('');
     setSearch(''); setAffordable(false); setPage(1);
   };
 
-  const source = tab === 'sotuvda' ? PRODUCTS : [];
+  const source = tab === 'sotuvda' ? PRODUCTS : purchased;
 
   const filtered = source.filter(p => {
     if (category !== 'Barchasi' && p.category !== category) return false;
     if (priceFrom !== '' && p.price < Number(priceFrom)) return false;
     if (priceTo   !== '' && p.price > Number(priceTo))   return false;
     if (search && !p.name.toLowerCase().includes(search.toLowerCase())) return false;
-    if (affordable && p.price > MY_KUMUSH) return false;
+    if (affordable && p.price > kumush) return false;
     return true;
   });
 
@@ -64,6 +80,12 @@ export default function Dokon() {
 
   return (
     <div className="dk-page">
+      {/* Kumush balans */}
+      <div className="dk-kumush-bar">
+        <span>🪙 Mening kumushlarim: <b>{kumush.toLocaleString()}</b></span>
+        {purchased.length > 0 && <span className="dk-purchased-count">{purchased.length} ta sotib olindi</span>}
+      </div>
+      {buyMsg && <div className="dk-buy-msg">{buyMsg}</div>}
       {/* Tabs */}
       <div className="dk-tabs">
         <button
@@ -73,7 +95,7 @@ export default function Dokon() {
         <button
           className={`dk-tab ${tab === 'sotilgan' ? 'dk-tab-active' : ''}`}
           onClick={() => handleTabChange('sotilgan')}
-        >Sotib olganlarim</button>
+        >Sotib olganlarim {purchased.length > 0 && `(${purchased.length})`}</button>
       </div>
 
       {/* Filters */}
@@ -161,8 +183,12 @@ export default function Dokon() {
                       <span>{p.price.toLocaleString()}</span>
                       <span className="dk-coin">🪙</span>
                     </div>
-                    <button className={`dk-buy-btn ${p.price <= MY_KUMUSH ? 'dk-buy-ok' : 'dk-buy-no'}`}>
-                      {p.price <= MY_KUMUSH ? 'Kumushingiz yetarli' : "Kumush yetarli emas"}
+                    <button
+                      className={`dk-buy-btn ${purchased.find(pp => pp.id === p.id) ? 'dk-buy-owned' : p.price <= kumush ? 'dk-buy-ok' : 'dk-buy-no'}`}
+                      onClick={() => buyProduct(p)}
+                      disabled={p.price > kumush || !!purchased.find(pp => pp.id === p.id)}
+                    >
+                      {purchased.find(pp => pp.id === p.id) ? '✅ Sotib olingan' : p.price <= kumush ? '🛒 Sotib olish' : "Kumush yetarli emas"}
                     </button>
                   </div>
                 </div>
@@ -182,7 +208,31 @@ export default function Dokon() {
           )}
         </>
       ) : (
-        <div className="dk-empty">Sotib olingan aksessuarlar mavjud emas</div>
+        <>
+          {purchased.length === 0 ? (
+            <div className="dk-empty">Hali hech narsa sotib olinmagan</div>
+          ) : (
+            <div className="dk-grid">
+              {purchased.map(p => (
+                <div className="dk-card" key={p.id}>
+                  <div className="dk-card-img" style={{ background: p.bg }}>
+                    <span className="dk-emoji">{p.emoji}</span>
+                  </div>
+                  <div className="dk-card-body">
+                    <div className="dk-card-name">{p.name}</div>
+                    <div className="dk-card-footer">
+                      <div className="dk-card-price">
+                        <span>{p.price.toLocaleString()}</span>
+                        <span className="dk-coin">🪙</span>
+                      </div>
+                      <button className="dk-buy-btn dk-buy-owned" disabled>✅ Sotib olingan</button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
