@@ -450,21 +450,28 @@ export const usersData = [
 
 const _viloyatlar = ['Toshkent shahri', 'Toshkent viloyati', 'Samarqand', "Farg'ona", 'Andijon', 'Namangan', 'Buxoro', 'Xorazm', 'Qashqadaryo', 'Surxondaryo', 'Sirdaryo', 'Jizzax', 'Navoiy', "Qoraqalpog'iston"];
 const _talimlar = ["Maktabda o'qiydi", "Universitetda o'qiydi", "O'qimaydi"];
-const usersDataFull = usersData.map(u => {
+const _PASS_CHARS = 'abcdefghjkmnpqrstuvwxyz23456789';
+function _genPass(seed) {
+  let s = seed;
+  return Array.from({ length: 8 }, () => {
+    s = (s * 1664525 + 1013904223) & 0x7fffffff;
+    return _PASS_CHARS[s % _PASS_CHARS.length];
+  }).join('');
+}
+
+export const usersDataFull = usersData.map(u => {
   const talim = u.talim || _talimlar[(u.id - 1) % 3];
   let age = u.age;
   if (!age) {
-    if (talim === "Maktabda o'qiydi") {
-      age = String(15 + (u.id % 3)); // 15, 16 yoki 17
-    } else {
-      age = String(18 + (u.id % 10)); // 18-27
-    }
+    age = talim === "Maktabda o'qiydi" ? String(15 + (u.id % 3)) : String(18 + (u.id % 10));
   }
   return {
     ...u,
     age,
     viloyat: u.viloyat || _viloyatlar[(u.id - 1) % 14],
     talim,
+    login: u.login || String(10000 + u.id),
+    password: u.password || _genPass(u.id * 31 + 7),
   };
 });
 
@@ -474,7 +481,16 @@ export default function Users() {
   const [users, setUsers] = useState(() => {
     try {
       const saved = localStorage.getItem('lms_users');
-      return saved ? JSON.parse(saved) : usersDataFull;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Eski ma'lumotlarda login/password yo'q bo'lsa, to'ldirish
+        return parsed.map(u => ({
+          ...u,
+          login: u.login || String(10000 + u.id),
+          password: u.password || _genPass(u.id * 31 + 7),
+        }));
+      }
+      return usersDataFull;
     } catch {
       return usersDataFull;
     }
@@ -692,12 +708,16 @@ export default function Users() {
                   <span className="detail-val">{selectedUser.phone}</span>
                 </div>
                 <div className="detail-item">
-                  <span className="detail-label">� Viloyat</span>
+                  <span className="detail-label">📍 Viloyat</span>
                   <span className="detail-val">{selectedUser.viloyat || <span style={{color:'#bbb'}}>Noma'lum</span>}</span>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">🔑 Login</span>
                   <span className="detail-val mono">{selectedUser.login || String(10000 + selectedUser.id)}</span>
+                </div>
+                <div className="detail-item">
+                  <span className="detail-label">🔒 Parol</span>
+                  <span className="detail-val mono">{selectedUser.password || _genPass(selectedUser.id * 31 + 7)}</span>
                 </div>
                 <div className="detail-item">
                   <span className="detail-label">🎂 Yoshi</span>
@@ -711,12 +731,6 @@ export default function Users() {
                   <div className="detail-item detail-item-full">
                     <span className="detail-label">📝 Chetlashtirish sababi</span>
                     <span className="detail-val" style={{color:'#e74c3c'}}>{selectedUser.suspendReason}</span>
-                  </div>
-                )}
-                {selectedUser.password && (
-                  <div className="detail-item">
-                    <span className="detail-label">🔒 Parol</span>
-                    <span className="detail-val mono">{selectedUser.password}</span>
                   </div>
                 )}
               </div>

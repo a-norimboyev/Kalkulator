@@ -39,10 +39,38 @@ export default function Groups() {
   const [attendance] = useState(() => {
     try { return JSON.parse(localStorage.getItem('lms_attendance') || '{}'); } catch { return {}; }
   });
+  const [groups, setGroups] = useState(groupsData);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [form, setForm] = useState({ name: '', course: '', teacher: '', assistant: '', startDate: '', endDate: '', time: '', endTime: '' });
+  const [formError, setFormError] = useState('');
+
+  const handleAdd = () => {
+    if (!form.name.trim() || !form.course.trim() || !form.teacher.trim() || !form.startDate || !form.endDate || !form.time || !form.endTime) {
+      setFormError("Majburiy maydonlarni to'ldiring!");
+      return;
+    }
+    const newGroup = {
+      id: Date.now(),
+      name: form.name.trim(),
+      course: form.course.trim(),
+      teacher: form.teacher.trim(),
+      assistant: form.assistant.trim(),
+      students: 0,
+      startDate: form.startDate,
+      endDate: form.endDate,
+      time: form.time,
+      endTime: form.endTime,
+      status: 'Faol',
+    };
+    setGroups(prev => [...prev, newGroup]);
+    setForm({ name: '', course: '', teacher: '', assistant: '', startDate: '', endDate: '', time: '', endTime: '' });
+    setFormError('');
+    setShowAddModal(false);
+  };
 
   const today = new Date().toISOString().slice(0, 10);
 
-  const filtered = groupsData.filter((g) => g.status === activeTab);
+  const filtered = groups.filter((g) => g.status === activeTab);
 
   const groupStudents = selectedGroup
     ? usersData.filter(u => u.group === selectedGroup.name)
@@ -65,7 +93,7 @@ export default function Groups() {
     <div className="groups-page">
       <div className="groups-header">
         <h2>Guruhlar</h2>
-        <button className="add-btn">+ Yangi guruh</button>
+        <button className="add-btn" onClick={() => { setFormError(''); setShowAddModal(true); }}>+ Yangi guruh</button>
       </div>
 
       {/* Filter tablar */}
@@ -203,6 +231,40 @@ export default function Groups() {
 
           <div className="group-modal-footer">
             <button className="modal-cancel" onClick={() => setSelectedGroup(null)}>Yopish</button>
+          </div>
+        </div>
+      </div>
+    )}
+    {/* Add Group Modal */}
+    {showAddModal && (
+      <div className="modal-overlay" onClick={() => setShowAddModal(false)}>
+        <div className="modal-box" onClick={e => e.stopPropagation()}>
+          <div className="modal-header">
+            <h3>Yangi guruh qo'shish</h3>
+            <button className="modal-close" onClick={() => setShowAddModal(false)}>✕</button>
+          </div>
+          <div className="modal-body">
+            <label>Guruh nomi *</label>
+            <input type="text" placeholder="Masalan: N70" value={form.name} onChange={e => setForm({...form, name: e.target.value})} />
+            <label>Kurs *</label>
+            <input type="text" placeholder="Masalan: Python" value={form.course} onChange={e => setForm({...form, course: e.target.value})} />
+            <label>Asosiy ustoz *</label>
+            <input type="text" placeholder="Ism Familiya" value={form.teacher} onChange={e => setForm({...form, teacher: e.target.value})} />
+            <label>Yordamchi ustoz</label>
+            <input type="text" placeholder="Ism Familiya" value={form.assistant} onChange={e => setForm({...form, assistant: e.target.value})} />
+            <label>Boshlanish sanasi *</label>
+            <input type="text" placeholder="01.07.2026" value={form.startDate} onChange={e => setForm({...form, startDate: e.target.value})} />
+            <label>Tugash sanasi *</label>
+            <input type="text" placeholder="01.11.2026" value={form.endDate} onChange={e => setForm({...form, endDate: e.target.value})} />
+            <label>Dars boshlanish vaqti *</label>
+            <input type="text" placeholder="09:00" value={form.time} onChange={e => setForm({...form, time: e.target.value})} />
+            <label>Dars tugash vaqti *</label>
+            <input type="text" placeholder="11:00" value={form.endTime} onChange={e => setForm({...form, endTime: e.target.value})} />
+            {formError && <div style={{color:'#e74c3c', fontSize:'0.88rem', marginTop:4}}>{formError}</div>}
+          </div>
+          <div className="modal-footer">
+            <button className="modal-cancel" onClick={() => setShowAddModal(false)}>Bekor qilish</button>
+            <button className="modal-save" onClick={handleAdd}>Saqlash</button>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@
 .pay-tab.tab-active { color: #7b2ff2; border-bottom: 2px solid #7b2ff2; font-weight: 700; }
 
 .pay-search-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.pay-search { flex: 1; padding: 10px 16px; border: 1.5px solid #e0d6ff; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+.pay-search { flex: 1; padding: 10px 16px; border: 1.5px solid #e0d6ff; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; background: #fff; color: #222; }
 .pay-search:focus { border-color: #7b2ff2; }
 .pay-count { color: #7b2ff2; font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
 

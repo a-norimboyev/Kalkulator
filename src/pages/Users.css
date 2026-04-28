@@ -11,7 +11,7 @@
 .users-tab.tab-active.tab-danger { color: #e74c3c; border-bottom: 2px solid #e74c3c; }
 
 .users-search-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.users-search { flex: 1; padding: 10px 16px; border: 1.5px solid #e0d6ff; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+.users-search { flex: 1; padding: 10px 16px; border: 1.5px solid #e0d6ff; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; background: #fff; color: #222; }
 .users-search:focus { border-color: #7b2ff2; }
 .users-count { color: #7b2ff2; font-weight: 600; font-size: 0.95rem; white-space: nowrap; }
 
