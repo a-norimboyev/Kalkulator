@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/variable.css" />
+  </head>
+  <body class="container">
+    <!-- Display section -->
+    <div class="display">
+      <h2 class="primary__number">0</h2>
+      <h3 class="secondary__number"></h3>
+    </div>
+    <!-- Button section  -->
+    <div class="buttons">
+      <button class="button">C</button>
+      <button class="button">+/-</button>
+      <button class="button">%</button>
+      <button class="button">/</button>
+      <button onclick="appendNumber('7')" class="button">7</button>
+      <button onclick="appendNumber('8')" class="button">8</button>
+      <button onclick="appendNumber('9')" class="button">9</button>
+      <button class="button">*</button>
+      <button onclick="appendNumber('4')" class="button">4</button>
+      <button onclick="appendNumber('5')" class="button">5</button>
+      <button onclick="appendNumber('6')" class="button">6</button>
+      <button class="button">-</button>
+      <button onclick="appendNumber('1')" class="button">1</button>
+      <button onclick="appendNumber('2')" class="button">2</button>
+      <button onclick="appendNumber('3')" class="button">3</button>
+      <button class="button">+</button>
+      <button onclick="appendNumber('0')" class="button">0</button>
+      <button class="button">.</button>
+      <button class="button">b</button>
+      <button class="button">=</button>
+    </div>
+  </body>
+  <script src="./js/script.js"></script>
+</html>
